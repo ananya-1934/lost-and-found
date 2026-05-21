@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lost & Found Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">L&F Portal</a>
+            <div class="nav-links">
+                <a href="index.html">Browse</a>
+                <a href="#" id="theme-toggle"><i class="fas fa-moon"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="display: flex; justify-content: center; align-items: center;">
+        <div class="form-container glass" style="width: 100%;">
+            
+            <div id="login-form-section">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Welcome Back</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required placeholder="student@college.edu">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+                    <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                        Don't have an account? <a href="#" id="show-register" style="color: var(--primary-color);">Sign Up</a>
+                    </p>
+                </form>
+            </div>
+
+            <div id="register-form-section" style="display: none;">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Create Account</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" required placeholder="student@college.edu">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                    <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                        Already have an account? <a href="#" id="show-login" style="color: var(--primary-color);">Sign In</a>
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Global App Logic -->
+    <script src="js/app.js"></script>
+    
+    <!-- Firebase Logic (Modular Pattern) -->
+    <script type="module" src="js/auth.js"></script>
+
+    <script>
+        // Simple UI toggle for the forms
+        document.getElementById('show-register').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('login-form-section').style.display = 'none';
+            document.getElementById('register-form-section').style.display = 'block';
+        });
+
+        document.getElementById('show-login').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('register-form-section').style.display = 'none';
+            document.getElementById('login-form-section').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
