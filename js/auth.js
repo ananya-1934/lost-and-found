@@ -12,6 +12,12 @@ import {
 onAuthStateChanged(auth, (user) => {
     const authLinks = document.getElementById('auth-links');
     if (user) {
+        // If the user is on the login page but already logged in, redirect them!
+        if (window.location.pathname.includes('login.html')) {
+            window.location.href = 'index.html';
+            return;
+        }
+
         // User is signed in
         if(authLinks) {
             authLinks.innerHTML = `
